@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CustomerProductDatabase extends AbstractDatabase<CustomerProduct>{
     public CustomerProductDatabase(String filename) {
@@ -13,7 +14,10 @@ public class CustomerProductDatabase extends AbstractDatabase<CustomerProduct>{
     @Override
     protected CustomerProduct createRecordFrom(String line) {
         String[]customer=line.split(",");
-            CustomerProduct customerProduct=new CustomerProduct(customer[0],customer[1], LocalDate.parse(customer[2]));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate date = LocalDate.parse(customer[2], formatter);
+
+        CustomerProduct customerProduct=new CustomerProduct(customer[0],customer[1],date);
 
         return customerProduct;
     }
