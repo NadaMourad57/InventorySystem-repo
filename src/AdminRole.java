@@ -1,26 +1,30 @@
 
 public class AdminRole {
-    private EmployeeUserDatabase database;
+    public EmployeeUserDatabase database;
 
     public AdminRole() {
 
-        database=new EmployeeUserDatabase("Employee.txt");
+       this.database=new EmployeeUserDatabase("resources/Employee.txt");
     }
 
     public void addEmployee(String name,String Id,String email,String address,String phone){
         EmployeeUser user=new EmployeeUser(name,Id,email,address,phone);
-        database.insertRecord(user);
+        System.out.println("created user "+user.getName());
+        this.database.insertRecord(user);
 
     }
    public EmployeeUser[] getListOfEmployees()  {
-           return database.returnAllRecords().toArray(new EmployeeUser[database.returnAllRecords().size()]);
+           return this.database.returnAllRecords().toArray(new EmployeeUser[0]);
 
    }
-public void removeRecord(String key){
-        database.deleteRecord(key);
+public void removeEmployee(String key){
+        this.database.deleteRecord(key);
 
 }
 public void logout(){
-        database.saveToFile();
+//    System.out.println("saving");
+        this.database.saveToFile();
+
+
 }
 }

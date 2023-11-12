@@ -54,7 +54,7 @@ public class EmployeeUser {
         this.phoneNumber = phoneNumber;
     }
     public String lineRepresentation(){
-        String s = this.employeeId + ", " + this.name + ", " + this.email + ", " + this.address + ", " + this.phoneNumber;
+        String s = this.employeeId + "," + this.name + "," + this.email + "," + this.address + "," + this.phoneNumber;
         return s;
     }
     public String getSearchKey(){

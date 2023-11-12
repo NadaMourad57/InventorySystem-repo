@@ -104,6 +104,8 @@ public class TestClass {
             return;
         }
         double returnValue=employee.returnProduct(oP3.getCustomerSSN(), oP3.getProductID(), oP3.getPurchaseDate(), LocalDate.of(2023, 5, 17));
+//        System.out.println(oldProducts.length+3);
+//        System.out.println(returnValue);
         if(returnValue != newProducts[oldProducts.length+3].getPrice()){
             System.out.println("There is a problem in returning the products");
             return;

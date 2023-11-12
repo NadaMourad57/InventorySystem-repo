@@ -1,5 +1,0 @@
-P2394,Laptop,Apple,TechSupplier,10,1500
-P2395,ipad,samsung,china,10,1500
-P2396,phone,lenovo,BestBuy,10,1500
-P2397,mouse,hp,Amazon,10,1500
-P2398,keypad,dell,macintosh,10,1500

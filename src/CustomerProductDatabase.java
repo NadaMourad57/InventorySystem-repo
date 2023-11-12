@@ -7,23 +7,25 @@ public class CustomerProductDatabase extends AbstractDatabase<CustomerProduct>{
     }
 
     @Override
-    protected String getSearchKey(CustomerProduct record) {
+    public String getSearchKey(CustomerProduct record) {
         return record.getSearchKey();
     }
 
     @Override
-    protected CustomerProduct createRecordFrom(String line) {
+    public CustomerProduct createRecordFrom(String line) {
         String[]customer=line.split(",");
+        System.out.println(customer[2]);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate date = LocalDate.parse(customer[2], formatter);
+       LocalDate date = LocalDate.parse(customer[2], formatter);
+        System.out.println(date);
 
-        CustomerProduct customerProduct=new CustomerProduct(customer[0],customer[1],date);
+       CustomerProduct customerProduct=new CustomerProduct(customer[0],customer[1],date);
 
         return customerProduct;
     }
 
     @Override
-    protected String recordToLine(CustomerProduct record) {
+    public String recordToLine(CustomerProduct record) {
         String s= record.getCustomerSSN()+","+record.getProductID()+","+record.getPurchaseDate();
         return s;
     }

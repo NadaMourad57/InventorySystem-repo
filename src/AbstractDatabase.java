@@ -7,9 +7,9 @@ public abstract class AbstractDatabase<T> {
     protected String filename;
 
     public AbstractDatabase(String filename) {
-        records=new ArrayList<T>();
+        this.records=new ArrayList<T>();
         this.filename = filename;
-        readFromFile();
+        this.readFromFile();
     }
 
     protected abstract String getSearchKey(T record);
@@ -20,7 +20,7 @@ public abstract class AbstractDatabase<T> {
 
 
     public boolean contains(String key) {
-        return records.stream().anyMatch(record->this.getSearchKey(record).equals(key));
+        return this.records.stream().anyMatch(record->this.getSearchKey(record).equals(key));
 
     }
 
@@ -42,7 +42,7 @@ public abstract class AbstractDatabase<T> {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     T t = createRecordFrom(line);
-                    records.add(t);
+                    this.records.add(t);
                 }
                 reader.close();
             } catch (IOException e) {
@@ -55,32 +55,36 @@ public abstract class AbstractDatabase<T> {
 
 
 
-    public ArrayList<T>returnAllRecords(){
-        ArrayList<T> referanceToRecords=records;
-        return referanceToRecords;
+    public ArrayList<T>returnAllRecords() {
+
+        return this.records;
     }
 
 
     public  T getRecord(String Key){
-        return records.stream().filter((record->this.getSearchKey(record).equals(Key))).findFirst().orElse(null);
+        return this.records.stream().filter((record->this.getSearchKey(record).equals(Key))).findFirst().orElse(null);
 
     }
     public void insertRecord(T record){
 
-        records.add(record);
+        this.records.add(record);
+//        System.out.println("number of records is "+records.size());
     }
     public  void deleteRecord(String Key){
-        records.removeIf(record->this.getSearchKey(record).equals(Key));
+        this.records.removeIf(record->this.getSearchKey(record).equals(Key));
     }
 
     public void saveToFile (){
         try {
             BufferedWriter writer=new BufferedWriter(new FileWriter(filename));
-            for(T t :records){
+            for(T t :this.records){
+//                System.out.println(this.recordToLine(t));
+//                System.out.println(filename);
                 writer.write(this.recordToLine(t));
                 writer.write('\n');
 
             }
+            writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

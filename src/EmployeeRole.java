@@ -5,14 +5,14 @@ public class EmployeeRole {
     private CustomerProductDatabase customerProductDatabase;
 
     public EmployeeRole() {
-        this.productDatabase=new ProductDatabase("Product.txt");
-        this.customerProductDatabase=new CustomerProductDatabase("CustomerProducts.txt");
+        this.productDatabase=new ProductDatabase("resources/Products.txt");
+        this.customerProductDatabase=new CustomerProductDatabase("resources/CustomerProducts.txt");
 
     }
     public void addProduct(String productID, String productName, String manufacturerName, String supplierName, int quantity,float price){
         Product product=new Product(productID,productName,manufacturerName,supplierName,quantity,price);
         this.productDatabase.insertRecord(product);
-        this.productDatabase.saveToFile();
+
     }
     public Product[] getListOfProducts(){
         return this.productDatabase.returnAllRecords().toArray(new Product[productDatabase.returnAllRecords().size()]);
@@ -35,11 +35,10 @@ public boolean purchaseProduct(String customerSSN, String productID, LocalDate p
 
         }
 }
-public double returnProduct(String customerSSN, String productID, LocalDate purchaseDate) {
-    LocalDate returnDate = LocalDate.now();
+public double returnProduct(String customerSSN, String productID, LocalDate purchaseDate,LocalDate returnDate) {
     CustomerProduct customerProduct = new CustomerProduct(customerSSN, productID, purchaseDate);
 
-    if (returnDate.isBefore(purchaseDate) || this.customerProductDatabase.contains(customerProduct.getSearchKey()) || purchaseDate.plusDays(14).isBefore(returnDate)) {
+    if (returnDate.isBefore(purchaseDate) || !(this.customerProductDatabase.contains(customerProduct.getSearchKey())) || purchaseDate.plusDays(14).isBefore(returnDate)) {
         return -1;
     } else {
         Product product = this.productDatabase.getRecord(productID);

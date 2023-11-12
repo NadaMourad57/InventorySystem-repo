@@ -28,7 +28,7 @@ public class Product {
     }
 
     public String lineRepresenation(){
-        String s = this.productID + ", " + this.productName + ", " + this.manufacturerName + ", " + this.SupplierName + ", " + this.quantity+", "+this.price;
+        String s = this.productID + ", " + this.productName + ", " + this.manufacturerName + "," + this.SupplierName + "," + this.quantity+","+this.price;
         return s;
     }
     public String getSearchKey(){
