@@ -1,3 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.mavenproject1.Backend;
+
+/**
+ *
+ * @author nadamourad
+ */
 public class EmployeeUser {
     private String name;
     private String employeeId;
@@ -5,7 +15,7 @@ public class EmployeeUser {
     private String address;
     private String phoneNumber;
 
-    public EmployeeUser(String name, String employeeId, String email, String address, String phoneNumber) {
+    public EmployeeUser( String employeeId,String name, String email, String address, String phoneNumber) {
         this.name = name;
         this.employeeId = employeeId;
         this.email = email;

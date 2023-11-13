@@ -1,6 +1,16 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.mavenproject1.Backend;
+
+/**
+ *
+ * @author nadamourad
+ */
 import java.time.LocalDate;
 
-public class TestClass {
+ class TestClass {
 
     private AdminRole admin;
     private EmployeeRole employee;
@@ -26,14 +36,14 @@ public class TestClass {
             return;
         }
 
-        admin.addEmployee("EMP-001", "Ahmed", "ahmed@email.com", "123 Street, Cairo", "+20123456789");
+        admin.addEmployee("EMP-001", "Ahmed", "ahmed@email.com", "123 Street Cairo", "+20123456789");
 
-        admin.addEmployee("EMP-002", "Mohamed", "mohamed@email.com", "456 Boulevard, Giza", "+20198765432");
+        admin.addEmployee("EMP-002", "Mohamed", "mohamed@email.com", "456 Boulevard Giza", "+20198765432");
 
-        admin.addEmployee("EMP-003", "Mariam", "mariam@email.com", "789 Avenue, Alexandria", "+20145678923");
+        admin.addEmployee("EMP-003", "Mariam", "mariam@email.com", "789 Avenue Alexandria", "+20145678923");
 
-        admin.addEmployee("EMP-004", "Hossam", "hossam@email.com", "101 Lane, Luxor", "+20132165498");
-        admin.addEmployee("EMP-005", "Nour", "nour@email.com", "202 Drive, Aswan", "+20165432178");
+        admin.addEmployee("EMP-004", "Hossam", "hossam@email.com", "101 Lane Luxor", "+20132165498");
+        admin.addEmployee("EMP-005", "Nour", "nour@email.com", "202 Drive Aswan", "+20165432178");
 
         admin.logout();
 

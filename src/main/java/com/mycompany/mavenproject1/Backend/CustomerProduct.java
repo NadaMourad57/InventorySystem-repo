@@ -1,3 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.mavenproject1.Backend;
+
+/**
+ *
+ * @author nadamourad
+ */
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -9,7 +19,8 @@ public class CustomerProduct {
     public CustomerProduct(String customerSSN, String productID, LocalDate purchaseDate) {
         this.customerSSN = customerSSN;
         this.productID = productID;
-        this.purchaseDate = purchaseDate;
+        this.purchaseDate= purchaseDate;
+
     }
     public String getCustomerSSN(){
         return this.customerSSN;
@@ -22,6 +33,7 @@ public class CustomerProduct {
         return this.purchaseDate;
      }
     public String lineRepresentation(){
+
         String date=this.purchaseDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         String s=this.customerSSN+","+this.productID+","+date;
         return s;
@@ -35,3 +47,5 @@ public class CustomerProduct {
 
 
 }
+
+

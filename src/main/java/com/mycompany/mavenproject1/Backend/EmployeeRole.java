@@ -1,3 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.mavenproject1.Backend;
+
+/**
+ *
+ * @author nadamourad
+ */
 import java.time.LocalDate;
 
 public class EmployeeRole {
@@ -5,8 +15,8 @@ public class EmployeeRole {
     private CustomerProductDatabase customerProductDatabase;
 
     public EmployeeRole() {
-        this.productDatabase=new ProductDatabase("resources/Products.txt");
-        this.customerProductDatabase=new CustomerProductDatabase("resources/CustomerProducts.txt");
+        this.productDatabase=new ProductDatabase("Products.txt");
+        this.customerProductDatabase=new CustomerProductDatabase("CustomerProducts.txt");
 
     }
     public void addProduct(String productID, String productName, String manufacturerName, String supplierName, int quantity,float price){
@@ -38,7 +48,7 @@ public boolean purchaseProduct(String customerSSN, String productID, LocalDate p
 public double returnProduct(String customerSSN, String productID, LocalDate purchaseDate,LocalDate returnDate) {
     CustomerProduct customerProduct = new CustomerProduct(customerSSN, productID, purchaseDate);
 
-    if (returnDate.isBefore(purchaseDate) || !(this.customerProductDatabase.contains(customerProduct.getSearchKey())) || purchaseDate.plusDays(14).isBefore(returnDate)) {
+    if (returnDate.isBefore(purchaseDate) || !(this.customerProductDatabase.containsRecord(customerProduct.getSearchKey())) || purchaseDate.plusDays(14).isBefore(returnDate)) {
         return -1;
     } else {
         Product product = this.productDatabase.getRecord(productID);

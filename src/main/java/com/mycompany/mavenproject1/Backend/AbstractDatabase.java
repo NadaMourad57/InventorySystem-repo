@@ -1,7 +1,18 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.mavenproject1.Backend;
+
+/**
+ *
+ * @author nadamourad
+ */
 import java.io.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
-public abstract class AbstractDatabase<T> {
+ abstract class AbstractDatabase<T> {
     protected ArrayList<T> records ;
 
     protected String filename;
@@ -19,7 +30,7 @@ public abstract class AbstractDatabase<T> {
 
 
 
-    public boolean contains(String key) {
+    public boolean containsRecord(String key) {
         return this.records.stream().anyMatch(record->this.getSearchKey(record).equals(key));
 
     }
@@ -71,7 +82,16 @@ public abstract class AbstractDatabase<T> {
 //        System.out.println("number of records is "+records.size());
     }
     public  void deleteRecord(String Key){
+        if(this.containsRecord(Key)){
+            JOptionPane.showMessageDialog(null, "The Employee with id= "+Key+"has been deleted", "Remove User", 0);
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(null, "The Employee with id= "+Key+" username doesn't exist", "Remove User", 0);
+        }
+        
         this.records.removeIf(record->this.getSearchKey(record).equals(Key));
+        
     }
 
     public void saveToFile (){
